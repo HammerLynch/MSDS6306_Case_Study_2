@@ -1,0 +1,1340 @@
+---
+title: Codebook for DDS Analytics
+subtitle: "Talent Management Solutions for DDS Analytics"
+date: 2018-11-23 18:44:41
+output: word_document
+---
+```{r , echo=FALSE, include=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+library("ggplot2")
+library("pander")
+```
+```{r 'visualFunctions', echo=FALSE, include=FALSE, warning=FALSE, message=FALSE, error=FALSE}
+ggAggHist <- getFromNamespace("ggAggHist", "dataMaid")
+ggAggBarplot <- getFromNamespace("ggAggBarplot", "dataMaid")
+```
+# Data report overview
+The dataset examined has the following dimensions:
+
+
+---------------------------------
+Feature                    Result
+------------------------ --------
+Number of observations       1470
+
+Number of variables            31
+---------------------------------
+
+
+
+
+# Codebook summary table
+
+--------------------------------------------------------------------------
+Label   Variable              Class       # unique  Missing  Description  
+                                            values                        
+------- --------------------- --------- ---------- --------- -------------
+        **[Age]**             integer           43  0.00 %   Age            
+
+        **[Attrition]**       factor             2  0.00 %   Attrition              
+
+        **[BusTravel]**       factor             3  0.00 %   Business Travel              
+
+        **[DailyRate]**       integer          886  0.00 %   Daily Rate              
+
+        **[Department]**      factor             3  0.00 %   Department              
+
+        **[DistFromHome]**    integer           29  0.00 %   Distance from Home              
+
+        **[Education]**       integer            5  0.00 %   Education              
+
+        **[EducationFd]**     factor             6  0.00 %   Education Field              
+
+        **[EmployeeCount]**   integer            4  0.00 %   Environment Count              
+        
+        **[EmployeeNumber]**  integer            4  0.00 %   Environment Number              
+
+        **[EnvSatis]**        integer            4  0.00 %   Environment Satisfaction              
+
+        **[Gender]**          factor             2  0.00 %   Gender             
+
+        **[HourlyRate]**      integer           71  0.00 %   Hourly Rate              
+
+        **[JobInvolvemt]**    integer            4  0.00 %   Job Involvement              
+
+        **[JobLevel]**        integer            5  0.00 %   Job Level              
+
+        **[JobRole]**         factor             9  0.00 %   Job Role              
+
+        **[JobbSatis]**       integer            4  0.00 %   Job Satisfaction              
+
+        **[MaritalStat]**     factor             3  0.00 %   Marital Status              
+
+        **[MntlyIncome]**     integer         1349  0.00 %   Monthly Income              
+
+        **[MntlyRate]**       integer         1427  0.00 %   Monthly Rate              
+
+        **[NumCompWrk]**      integer           10  0.00 %   Number of Companies worked              
+
+        **[OverTime]**        factor             2  0.00 %   Overtime              
+
+        **[PercSalHike]**     integer           15  0.00 %   Percentage Salary Hike              
+
+        **[PerfRating]**      integer            2  0.00 %   Performance Rating              
+
+        **[RelatSatis]**      integer            4  0.00 %   Relationship Status              
+
+        **[StkOptLevel]**     integer            4  0.00 %   Stock Options Level              
+
+        **[TotalWrkYrs]**     integer           40  0.00 %   Total Working Years              
+
+        **[TrTmLastYr]**      integer            7  0.00 %   Training Times Last Year              
+
+        **[WrkLfBalance]**    integer            4  0.00 %   Work Life Balance              
+
+        **[YrsAtComp]**       integer           37  0.00 %   Years at the company              
+
+        **[YrsInCurrRle]**    integer           19  0.00 %   Years in current role              
+
+        **[YrsSceLstProm]**   integer           16  0.00 %   Years since last promotion              
+
+        **[YrsWtCurrMgr]**    integer           18  0.00 %   Years with Current Manager              
+--------------------------------------------------------------------------
+
+
+
+
+# Variable list
+## Age
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          43
+
+Median                           36
+
+1st and 3rd quartiles        30; 43
+
+Min. and max.                18; 60
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-1-Age', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(15L, 20L, 25L, 30L, 
+35L, 40L, 45L, 50L, 55L), xmax = c(20L, 25L, 30L, 35L, 40L, 45L, 
+50L, 55L, 60L), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(28L, 
+95L, 263L, 343L, 276L, 192L, 130L, 96L, 47L)), class = "data.frame", row.names = c(NA, 
+-9L)), vnam = "Age")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## Attrition
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type                factor
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           2
+
+Mode                           "No"
+
+Reference category               No
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-2-Attrition', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:2, .Label = c("No", 
+"Yes"), class = "factor"), y = c(1233L, 237L)), class = "data.frame", row.names = c(NA, 
+-2L)), vnam = "Attrition")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"No\", \"Yes\". 
+
+
+
+---
+
+## BusTravel
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-------------------------------------------
+Feature                              Result
+------------------------- -----------------
+Variable type                        factor
+
+Number of missing obs.              0 (0 %)
+
+Number of unique values                   3
+
+Mode                        "Travel_Rarely"
+
+Reference category               Non-Travel
+-------------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-3-BusTravel', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:3, .Label = c("Non-Travel", 
+"Travel_Frequently", "Travel_Rarely"), class = "factor"), y = c(150L, 
+277L, 1043L)), class = "data.frame", row.names = c(NA, -3L)), 
+    vnam = "BusTravel")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"Non-Travel\", \"Travel_Frequently\", \"Travel_Rarely\". 
+
+
+
+---
+
+## DailyRate
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-------------------------------------
+Feature                        Result
+------------------------- -----------
+Variable type                 integer
+
+Number of missing obs.        0 (0 %)
+
+Number of unique values           886
+
+Median                            802
+
+1st and 3rd quartiles       465; 1157
+
+Min. and max.               102; 1499
+-------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-4-DailyRate', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(100L, 200L, 300L, 400L, 
+500L, 600L, 700L, 800L, 900L, 1000L, 1100L, 1200L, 1300L, 1400L
+), xmax = c(200L, 300L, 400L, 500L, 600L, 700L, 800L, 900L, 1000L, 
+1100L, 1200L, 1300L, 1400L, 1500L), ymin = c(0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0), ymax = c(106L, 91L, 103L, 105L, 123L, 
+119L, 86L, 107L, 107L, 90L, 111L, 105L, 123L, 94L)), class = "data.frame", row.names = c(NA, 
+-14L)), vnam = "DailyRate")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## Department
+
+<div class = "row">
+<div class = "col-lg-8">
+
+----------------------------------------------------
+Feature                                       Result
+------------------------- --------------------------
+Variable type                                 factor
+
+Number of missing obs.                       0 (0 %)
+
+Number of unique values                            3
+
+Mode                        "Research & Development"
+
+Reference category                   Human Resources
+----------------------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-5-Department', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:3, .Label = c("Human Resources", 
+"Research & Development", "Sales"), class = "factor"), y = c(63L, 
+961L, 446L)), class = "data.frame", row.names = c(NA, -3L)), 
+    vnam = "Department")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"Human Resources\", \"Research & Development\", \"Sales\". 
+
+
+
+---
+
+## DistFromHome
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          29
+
+Median                            7
+
+1st and 3rd quartiles         2; 14
+
+Min. and max.                 1; 29
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-6-DistFromHome', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 2, 4, 6, 8, 10, 12, 
+14, 16, 18, 20, 22, 24, 26, 28), xmax = c(2, 4, 6, 8, 10, 12, 
+14, 16, 18, 20, 22, 24, 26, 28, 30), ymin = c(0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(419L, 148L, 124L, 164L, 
+171L, 49L, 40L, 58L, 46L, 47L, 37L, 55L, 50L, 35L, 27L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "DistFromHome")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## Education
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           5
+
+Median                            3
+
+1st and 3rd quartiles          2; 4
+
+Min. and max.                  1; 5
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-7-Education', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.5, 2, 2.5, 3, 3.5, 
+4, 4.5), xmax = c(1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0), ymax = c(170L, 282L, 0L, 572L, 0L, 398L, 
+0L, 48L)), class = "data.frame", row.names = c(NA, -8L)), vnam = "Education")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## EducationFd
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-------------------------------------------
+Feature                              Result
+------------------------- -----------------
+Variable type                        factor
+
+Number of missing obs.              0 (0 %)
+
+Number of unique values                   6
+
+Mode                        "Life Sciences"
+
+Reference category          Human Resources
+-------------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-8-EducationFd', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:6, .Label = c("Human Resources", 
+"Life Sciences", "Marketing", "Medical", "Other", "Technical Degree"
+), class = "factor"), y = c(27L, 606L, 159L, 464L, 82L, 132L)), class = "data.frame", row.names = c(NA, 
+-6L)), vnam = "EducationFd")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"Human Resources\", \"Life Sciences\", \"Marketing\", \"Medical\", \"Other\", \"Technical Degree\". 
+
+
+
+---
+
+## EnvSatis
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           4
+
+Median                            3
+
+1st and 3rd quartiles          2; 4
+
+Min. and max.                  1; 4
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-9-EnvSatis', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.2, 1.4, 1.6, 1.8, 
+2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8), xmax = c(1.2, 
+1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 
+4), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(284L, 
+0L, 0L, 0L, 287L, 0L, 0L, 0L, 0L, 453L, 0L, 0L, 0L, 0L, 446L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "EnvSatis")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## Gender
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type                factor
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           2
+
+Mode                         "Male"
+
+Reference category           Female
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-10-Gender', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:2, .Label = c("Female", 
+"Male"), class = "factor"), y = c(588L, 882L)), class = "data.frame", row.names = c(NA, 
+-2L)), vnam = "Gender")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"Female\", \"Male\". 
+
+
+
+---
+
+## HourlyRate
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-------------------------------------
+Feature                        Result
+------------------------- -----------
+Variable type                 integer
+
+Number of missing obs.        0 (0 %)
+
+Number of unique values            71
+
+Median                             66
+
+1st and 3rd quartiles       48; 83.75
+
+Min. and max.                 30; 100
+-------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-11-HourlyRate', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(30L, 35L, 40L, 45L, 
+50L, 55L, 60L, 65L, 70L, 75L, 80L, 85L, 90L, 95L), xmax = c(35L, 
+40L, 45L, 50L, 55L, 60L, 65L, 70L, 75L, 80L, 85L, 90L, 95L, 100L
+), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(107L, 
+84L, 115L, 103L, 104L, 114L, 97L, 93L, 107L, 111L, 113L, 103L, 
+104L, 115L)), class = "data.frame", row.names = c(NA, -14L)), 
+    vnam = "HourlyRate")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## JobInvolvemt
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           4
+
+Median                            3
+
+1st and 3rd quartiles          2; 3
+
+Min. and max.                  1; 4
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-12-JobInvolvemt', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.2, 1.4, 1.6, 1.8, 
+2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8), xmax = c(1.2, 
+1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 
+4), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(83L, 
+0L, 0L, 0L, 375L, 0L, 0L, 0L, 0L, 868L, 0L, 0L, 0L, 0L, 144L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "JobInvolvemt")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## JobLevel
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           5
+
+Median                            2
+
+1st and 3rd quartiles          1; 3
+
+Min. and max.                  1; 5
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-13-JobLevel', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.5, 2, 2.5, 3, 3.5, 
+4, 4.5), xmax = c(1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0), ymax = c(543L, 534L, 0L, 218L, 0L, 106L, 
+0L, 69L)), class = "data.frame", row.names = c(NA, -8L)), vnam = "JobLevel")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## JobRole
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------------------------
+Feature                                        Result
+------------------------- ---------------------------
+Variable type                                  factor
+
+Number of missing obs.                        0 (0 %)
+
+Number of unique values                             9
+
+Mode                                "Sales Executive"
+
+Reference category          Healthcare Representative
+-----------------------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-14-JobRole', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:9, .Label = c("Healthcare Representative", 
+"Human Resources", "Laboratory Technician", "Manager", "Manufacturing Director", 
+"Research Director", "Research Scientist", "Sales Executive", 
+"Sales Representative"), class = "factor"), y = c(131L, 52L, 
+259L, 102L, 145L, 80L, 292L, 326L, 83L)), class = "data.frame", row.names = c(NA, 
+-9L)), vnam = "JobRole")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"Healthcare Representative\", \"Human Resources\", \"Laboratory Technician\", \"Manager\", \"Manufacturing Director\", \"Research Director\", \"Research Scientist\", \"Sales Executive\", \"Sales Representative\". 
+
+
+
+---
+
+## JobbSatis
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           4
+
+Median                            3
+
+1st and 3rd quartiles          2; 4
+
+Min. and max.                  1; 4
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-15-JobbSatis', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.2, 1.4, 1.6, 1.8, 
+2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8), xmax = c(1.2, 
+1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 
+4), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(289L, 
+0L, 0L, 0L, 280L, 0L, 0L, 0L, 0L, 442L, 0L, 0L, 0L, 0L, 459L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "JobbSatis")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## MaritalStat
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-------------------------------------
+Feature                        Result
+------------------------- -----------
+Variable type                  factor
+
+Number of missing obs.        0 (0 %)
+
+Number of unique values             3
+
+Mode                        "Married"
+
+Reference category           Divorced
+-------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-16-MaritalStat', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:3, .Label = c("Divorced", 
+"Married", "Single"), class = "factor"), y = c(327L, 673L, 470L
+)), class = "data.frame", row.names = c(NA, -3L)), vnam = "MaritalStat")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"Divorced\", \"Married\", \"Single\". 
+
+
+
+---
+
+## MntlyIncome
+
+<div class = "row">
+<div class = "col-lg-8">
+
+---------------------------------------
+Feature                          Result
+------------------------- -------------
+Variable type                   integer
+
+Number of missing obs.          0 (0 %)
+
+Number of unique values            1349
+
+Median                             4919
+
+1st and 3rd quartiles        2911; 8379
+
+Min. and max.               1009; 19999
+---------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-17-MntlyIncome', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 2000, 4000, 6000, 
+8000, 10000, 12000, 14000, 16000, 18000), xmax = c(2000, 4000, 
+6000, 8000, 10000, 12000, 14000, 16000, 18000, 20000), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(33L, 510L, 371L, 175L, 100L, 
+86L, 53L, 16L, 57L, 69L)), class = "data.frame", row.names = c(NA, 
+-10L)), vnam = "MntlyIncome")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## MntlyRate
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------------
+Feature                            Result
+------------------------- ---------------
+Variable type                     integer
+
+Number of missing obs.            0 (0 %)
+
+Number of unique values              1427
+
+Median                            14235.5
+
+1st and 3rd quartiles       8047; 20461.5
+
+Min. and max.                 2094; 26999
+-----------------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-18-MntlyRate', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(2000L, 4000L, 6000L, 
+8000L, 10000L, 12000L, 14000L, 16000L, 18000L, 20000L, 22000L, 
+24000L, 26000L), xmax = c(4000L, 6000L, 8000L, 10000L, 12000L, 
+14000L, 16000L, 18000L, 20000L, 22000L, 24000L, 26000L, 28000L
+), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(110L, 
+130L, 123L, 124L, 118L, 116L, 114L, 120L, 117L, 119L, 131L, 99L, 
+49L)), class = "data.frame", row.names = c(NA, -13L)), vnam = "MntlyRate")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## NumCompWrk
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          10
+
+Median                            2
+
+1st and 3rd quartiles          1; 4
+
+Min. and max.                  0; 9
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-19-NumCompWrk', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 1, 2, 3, 4, 5, 6, 
+7, 8), xmax = c(1, 2, 3, 4, 5, 6, 7, 8, 9), ymin = c(0, 0, 0, 
+0, 0, 0, 0, 0, 0), ymax = c(718L, 146L, 159L, 139L, 63L, 70L, 
+74L, 49L, 52L)), class = "data.frame", row.names = c(NA, -9L)), 
+    vnam = "NumCompWrk")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## OverTime
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type                factor
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           2
+
+Mode                           "No"
+
+Reference category               No
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-20-OverTime', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggBarplot(data = structure(list(x = structure(1:2, .Label = c("No", 
+"Yes"), class = "factor"), y = c(1054L, 416L)), class = "data.frame", row.names = c(NA, 
+-2L)), vnam = "OverTime")
+```
+</div>
+</div>
+
+
+- Observed factor levels: \"No\", \"Yes\". 
+
+
+
+---
+
+## PercSalHike
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          15
+
+Median                           14
+
+1st and 3rd quartiles        12; 18
+
+Min. and max.                11; 25
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-21-PercSalHike', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = 11:24, xmax = 12:25, ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(408L, 209L, 
+201L, 101L, 78L, 82L, 89L, 76L, 55L, 48L, 56L, 28L, 21L, 18L)), class = "data.frame", row.names = c(NA, 
+-14L)), vnam = "PercSalHike")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## PerfRating
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           2
+
+Median                            3
+
+1st and 3rd quartiles          3; 3
+
+Min. and max.                  3; 4
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-22-PerfRating', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(3, 3.1, 3.2, 3.3, 3.4, 
+3.5, 3.6, 3.7, 3.8, 3.9), xmax = c(3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 
+3.7, 3.8, 3.9, 4), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(1244L, 
+0L, 0L, 0L, 0L, 0L, 0L, 0L, 0L, 226L)), class = "data.frame", row.names = c(NA, 
+-10L)), vnam = "PerfRating")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## RelatSatis
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           4
+
+Median                            3
+
+1st and 3rd quartiles          2; 4
+
+Min. and max.                  1; 4
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-23-RelatSatis', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.2, 1.4, 1.6, 1.8, 
+2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8), xmax = c(1.2, 
+1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 
+4), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(276L, 
+0L, 0L, 0L, 303L, 0L, 0L, 0L, 0L, 459L, 0L, 0L, 0L, 0L, 432L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "RelatSatis")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## StkOptLevel
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           4
+
+Median                            1
+
+1st and 3rd quartiles          0; 1
+
+Min. and max.                  0; 3
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-24-StkOptLevel', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 0.2, 0.4, 0.6, 0.8, 
+1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8), xmax = c(0.2, 
+0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 
+3), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(631L, 
+0L, 0L, 0L, 596L, 0L, 0L, 0L, 0L, 158L, 0L, 0L, 0L, 0L, 85L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "StkOptLevel")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## TotalWrkYrs
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          40
+
+Median                           10
+
+1st and 3rd quartiles         6; 15
+
+Min. and max.                 0; 40
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-25-TotalWrkYrs', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 5, 10, 15, 20, 25, 
+30, 35), xmax = c(5, 10, 15, 20, 25, 30, 35, 40), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0), ymax = c(316L, 607L, 191L, 149L, 109L, 
+52L, 33L, 13L)), class = "data.frame", row.names = c(NA, -8L)), 
+    vnam = "TotalWrkYrs")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## TrTmLastYr
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           7
+
+Median                            3
+
+1st and 3rd quartiles          2; 3
+
+Min. and max.                  0; 6
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-26-TrTmLastYr', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 0.5, 1, 1.5, 2, 2.5, 
+3, 3.5, 4, 4.5, 5, 5.5), xmax = c(0.5, 1, 1.5, 2, 2.5, 3, 3.5, 
+4, 4.5, 5, 5.5, 6), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
+0), ymax = c(54L, 71L, 0L, 547L, 0L, 491L, 0L, 123L, 0L, 119L, 
+0L, 65L)), class = "data.frame", row.names = c(NA, -12L)), vnam = "TrTmLastYr")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## WrkLfBalance
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values           4
+
+Median                            3
+
+1st and 3rd quartiles          2; 3
+
+Min. and max.                  1; 4
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-27-WrkLfBalance', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(1, 1.2, 1.4, 1.6, 1.8, 
+2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8), xmax = c(1.2, 
+1.4, 1.6, 1.8, 2, 2.2, 2.4, 2.6, 2.8, 3, 3.2, 3.4, 3.6, 3.8, 
+4), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), ymax = c(80L, 
+0L, 0L, 0L, 344L, 0L, 0L, 0L, 0L, 893L, 0L, 0L, 0L, 0L, 153L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "WrkLfBalance")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## YrsAtComp
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          37
+
+Median                            5
+
+1st and 3rd quartiles          3; 9
+
+Min. and max.                 0; 40
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-28-YrsAtComp', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 5, 10, 15, 20, 25, 
+30, 35), xmax = c(5, 10, 15, 20, 25, 30, 35, 40), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0), ymax = c(776L, 448L, 108L, 72L, 41L, 9L, 
+12L, 4L)), class = "data.frame", row.names = c(NA, -8L)), vnam = "YrsAtComp")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## YrsInCurrRle
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          19
+
+Median                            3
+
+1st and 3rd quartiles          2; 7
+
+Min. and max.                 0; 18
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-29-YrsInCurrRle', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 2, 4, 6, 8, 10, 12, 
+14, 16), xmax = c(2, 4, 6, 8, 10, 12, 14, 16, 18), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0, 0), ymax = c(673L, 239L, 73L, 311L, 96L, 
+32L, 25L, 15L, 6L)), class = "data.frame", row.names = c(NA, 
+-9L)), vnam = "YrsInCurrRle")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## YrsSceLstProm
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          16
+
+Median                            1
+
+1st and 3rd quartiles          0; 3
+
+Min. and max.                 0; 15
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-30-YrsSceLstProm', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 1, 2, 3, 4, 5, 6, 
+7, 8, 9, 10, 11, 12, 13, 14), xmax = c(1, 2, 3, 4, 5, 6, 7, 8, 
+9, 10, 11, 12, 13, 14, 15), ymin = c(0, 0, 0, 0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0, 0, 0), ymax = c(938L, 159L, 52L, 61L, 45L, 32L, 
+76L, 18L, 17L, 6L, 24L, 10L, 10L, 9L, 13L)), class = "data.frame", row.names = c(NA, 
+-15L)), vnam = "YrsSceLstProm")
+```
+</div>
+</div>
+
+
+
+
+---
+
+## YrsWtCurrMgr
+
+<div class = "row">
+<div class = "col-lg-8">
+
+-----------------------------------
+Feature                      Result
+------------------------- ---------
+Variable type               integer
+
+Number of missing obs.      0 (0 %)
+
+Number of unique values          18
+
+Median                            3
+
+1st and 3rd quartiles          2; 7
+
+Min. and max.                 0; 17
+-----------------------------------
+
+
+</div>
+<div class = "col-lg-4">
+```{r 'Var-31-YrsWtCurrMgr', echo=FALSE, fig.width=4, fig.height=3, message=FALSE, warning=FALSE}
+ggAggHist(data = structure(list(xmin = c(0, 2, 4, 6, 8, 10, 12, 
+14, 16), xmax = c(2, 4, 6, 8, 10, 12, 14, 16, 18), ymin = c(0, 
+0, 0, 0, 0, 0, 0, 0, 0), ymax = c(683L, 240L, 60L, 323L, 91L, 
+40L, 19L, 7L, 7L)), class = "data.frame", row.names = c(NA, -9L
+)), vnam = "YrsWtCurrMgr")
+```
+</div>
+</div>
+
+
+
+
+---
+
+
+
+Report generation information:
+
+ *  Created by error: invalid key: Mylapore/.gitconfig (username: `Satish Mylapore`).
+
+ *  Report creation time: Fri Nov 23 2018 18:44:44
+
+ *  Report was run from directory: `C:/Users/Satish Mylapore/Documents/CaseStudy/CaseStudy2/MSDS6306_Case_Study_2/Assignment/Code/Data`
+
+ *  dataMaid v1.2.0 [Pkg: 2018-10-03 from CRAN (R 3.5.1)]
+
+ *  R version 3.5.1 (2018-07-02).
+
+ *  Platform: x86_64-w64-mingw32/x64 (64-bit)(Windows >= 8 x64 (build 9200)).
+
+ *  Function call: `makeDataReport(data = data, mode = c("summarize", "visualize", 
+"check"), smartNum = FALSE, file = "codebook_dataCodebook.RMD.Rmd", 
+    vol = "Codebook.RMD", checks = list(character = "showAllFactorLevels", 
+        factor = "showAllFactorLevels", labelled = "showAllFactorLevels", 
+        haven_labelled = "showAllFactorLevels", numeric = NULL, 
+        integer = NULL, logical = NULL, Date = NULL), listChecks = FALSE, 
+    maxProbVals = Inf, codebook = TRUE, reportTitle = "Codebook for data")`
+

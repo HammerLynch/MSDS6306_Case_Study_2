@@ -1,0 +1,163 @@
+---
+title: "Talent Management Solutions for DDS Analytics"
+author: "Satish, Tyler, Lieng, James"
+date: "November 23, 2018"
+output: html_document
+---
+**GitHub**:https://github.com/HammerLynch/MSDS6306_Case_Study_2  
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+### R-version info
+Environment information where the code was executed.
+
+```{r VersionData}
+# R Version Used:
+R.version
+
+```
+
+
+### Libraries and Initial Data Prepration
+R Libraries required for the proejct  
+
+* plyr
+* dplyr
+* tidyr
+* ggplot2
+
+Once the libraries are loaded, the data sets are loaded and prepared for further analysis.
+
+```{r GatherData}
+require(plyr)
+require(dplyr)
+require(tidyr)
+require(ggplot2)
+require(gridExtra)
+
+# download data 2.a
+data <- read.csv("C:/Users/Satish Mylapore/Documents/SMU/MSDS 6306/Homework/CaseStudy2/CaseStudy2_2_2_2/data.csv")
+
+```
+
+
+### 1. Formulate your Repo 
+**a** The client wants this to be reproducible and know exactly what you did.  There needs to be an informative Readme, complete with several sections, as referenced in Live Session.  Give contact information, session Info, and the objective of the repo at least.  
+**b** You have a large data set, and it needs its own Codebook, formatted in an approachable way.  Make sure you describe peculiarities of the data by variable and what needs transforming.  However, do not make it too long either.
+**c** Create a file structure that is accessible and transparent.  Document it in the root directory, ideally in the Readme.
+
+
+
+``` {r Question_1}
+#Setting up seed for reproducible results
+set.seed(2018)
+# R Version Used:
+R.version
+# Session information
+sessionInfo()
+
+```
+
+
+### 2. Clean your Raw Data 
+**a** Read the csv into R and take a look at the data set.  Output how many rows and columns the data.frame is.
+**b** The column names are either too much or not enough.  Change the column names so that they do not have spaces, underscores, slashes, and the like. All column names should be under 12 characters. Make sure you’re updating your codebook with information on the tidied data set as well.
+**c** Some columns are, due to Qualtrics, malfunctioning.  
+d Make sure your columns are the proper data types (i.e., numeric, character, etc.).  If they are incorrect, convert them.  
+
+
+```{r Question_2}
+#display #row,#cols and fields 2.d (verified the data for data types)
+str(data)
+#Change col names less than 12 char 2.b,c
+names(data) <- c("Age","Attrition","BusTravel","DailyRate","Department","DistFromHome","Education","EducationFd","EmpCount","EmpNumber","EnvSatis","Gender","HourlyRate","JobInvolvemt","JobLevel","JobRole","JobbSatis","MaritalStat","MntlyIncome","MntlyRate","NumCompWrk","Over18","OverTime","PercSalHike","PerfRating","RelatSatis","StdHrs","StkOptLevel","TotalWrkYrs","TrTmLastYr","WrkLfBalance","YrsAtComp","YrsInCurrRle","YrsSceLstProm","YrsWtCurrMgr")
+# cleaning data - removed column Over18 as this column has only value "Y", StdHrs = 80, EmpCount = 1
+# lapply(data, function(x) {unique(x)}) # code used to check unique values
+data <- subset(data, select = -c(Over18, StdHrs, EmpCount, EmpNumber))
+
+```
+
+
+### 3. Preliminary Analysis
+**a** Remove all observations where the participant is under age 18.  No further analysis of underage individuals is permitted by your client.  Remove any other age outliers as you see fit, but be sure to tell what you’re doing and why.
+b Please provide (in table format or similar), descriptive statistics on at least 7 variables (age, Income, etc.).  Create **a** simple histogram for two of them.  Comment on the shape of the distribution in your markdown.
+*c* Give the frequencies (in table format or similar) for Gender, Education, and Occupation.  They can be separate tables, if that’s your choice.
+*d* Give the counts (again, table) of management positions.
+
+
+```{r Question_3}
+
+# check for data with age less than 18 3.a
+data[data$Age < 18,]
+#Inspection the significant features and identifying 7 important variables that impacts the response variable (Attrition)
+data.glm <- glm(Attrition ~., data = data, family = "binomial")
+data.glm.reduced <- glm(Attrition ~ YrsSceLstProm + OverTime + NumCompWrk + MaritalStat + JobbSatis + JobInvolvemt + EnvSatis + DistFromHome + BusTravel, data = data, family = "binomial")
+data.glm.reduced <- glm(Attrition ~ YrsSceLstProm + OverTime + MaritalStat + JobbSatis + JobInvolvemt + EnvSatis + DistFromHome + BusTravel, data = data, family = "binomial")
+data.glm.reduced <- glm(Attrition ~ OverTime + MaritalStat + JobbSatis + JobInvolvemt + EnvSatis + DistFromHome + BusTravel, data = data, family = "binomial")
+
+data.7 <- subset(data, select = c(Attrition,OverTime,MaritalStat,JobbSatis,JobInvolvemt,EnvSatis,DistFromHome, BusTravel))
+# descriptive statistics on at least 7 variables
+summary(data.7)
+data.freq <- subset(data, select = c(Gender, Education, JobRole))
+
+gender <- data.freq %>% count(Gender)
+Education <- data.freq %>% count(Education)
+JobRole <- data.freq %>% count(JobRole)
+Education[Education$Education == 1,1] <- "Below College"
+Education[Education$Education == 2,1] <- "College"
+Education[Education$Education == 3,1] <- "Bachelor"
+Education[Education$Education == 4,1] <- "Master"
+Education[Education$Education == 5,1] <- "Doctor"
+
+gender
+g <- ggplot(data=gender, aes(x=reorder(Gender, -n), y=n, fill = n)) + geom_bar(stat="identity", color="black", position=position_dodge())+theme_minimal() + ylab("Frequency/Count") + xlab("Gender")
+grid.arrange(g)
+
+Education
+e <- ggplot(data=Education, aes(x=reorder(Education, -n), y=n, fill = n)) + geom_bar(stat="identity", color="black", position=position_dodge())+theme_minimal() + ylab("Frequency/Count") + xlab("Education")
+grid.arrange(e)
+
+JobRole
+j <- ggplot(data=JobRole, aes(x=reorder(JobRole, -n), y=n, fill = n)) + geom_bar(stat="identity", color="black", position=position_dodge())+theme_minimal() + ylab("Frequency/Count") + xlab("Job Role")
+grid.arrange(j)
+
+# Considering JobRole with Manager/Director as Management Positions
+JobRole.Manager <- JobRole[which(JobRole$JobRole == "Manager" | JobRole$JobRole == "Manufacturing Director" | JobRole$JobRole == "Research Director"),]
+JobRole.Manager
+jm <- ggplot(data=JobRole.Manager, aes(x=reorder(JobRole, -n), y=n, fill = n)) + geom_bar(stat="identity", color="black", position=position_dodge())+theme_minimal() + ylab("Frequency/Count") + xlab("Managers")
+grid.arrange(jm)
+
+```
+
+
+### 4. Deeper Analysis and Visualization 
+**a** Note: You should make all of these appealing looking.  Remember to include things like a clean, informative title, axis labels that are in plain English, and readable axis values that do not overlap.
+**b** Create bar charts in ggplot or similar. The bars should be in descending order, Use any color palette of your choice other than the default.
+**c** Is there a relationship between Age and Income?  Create a scatterplot and make an assessment of whether there is a relationship.  Color each point based on the Gender of the participant.  You’re welcome to use lm() or similar functions to back up your claims.
+**d** What about Life Satisfaction?  Create another scatterplot.  Is there a discernible relationship there to what?
+
+
+
+```{r Question_4}
+ggplot(data=data, aes(x=Age, y=MntlyIncome, col = Gender)) + geom_point() + geom_smooth(method = "lm", aes(fill = Gender)) + geom_density2d()
+
+
+js <- data %>% group_by(Age) %>% count(JobbSatis)
+mi <- data %>% group_by(Age) %>% count(WrkLfBalance)
+
+#Work Life Balance
+ggplot(data=mi, aes(x=WrkLfBalance, y=n, col = Age)) + geom_point() + geom_smooth(method = "lm", aes(fill = Age)) + geom_density2d()
+#Job Satisfaction
+ggplot(data=js, aes(x=JobbSatis, y=n, col = Age)) + geom_point() + geom_smooth(method = "lm", aes(fill = Age)) + geom_density2d()
+
+
+```
+
+
+### Conclusion
+
+
+
