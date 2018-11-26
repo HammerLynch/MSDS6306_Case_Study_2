@@ -39,7 +39,7 @@ require(ggplot2)
 require(gridExtra)
 
 # download data 2.a
-data <- read.csv("C:/Users/Satish Mylapore/Documents/SMU/MSDS 6306/Homework/CaseStudy2/CaseStudy2_2_2_2/data.csv")
+data <- read.csv("Data/CaseStudy2-data.csv")
 
 ```
 
@@ -76,6 +76,7 @@ str(data)
 names(data) <- c("Age","Attrition","BusTravel","DailyRate","Department","DistFromHome","Education","EducationFd","EmpCount","EmpNumber","EnvSatis","Gender","HourlyRate","JobInvolvemt","JobLevel","JobRole","JobbSatis","MaritalStat","MntlyIncome","MntlyRate","NumCompWrk","Over18","OverTime","PercSalHike","PerfRating","RelatSatis","StdHrs","StkOptLevel","TotalWrkYrs","TrTmLastYr","WrkLfBalance","YrsAtComp","YrsInCurrRle","YrsSceLstProm","YrsWtCurrMgr")
 # cleaning data - removed column Over18 as this column has only value "Y", StdHrs = 80, EmpCount = 1
 # lapply(data, function(x) {unique(x)}) # code used to check unique values
+# Remove columns that are not necessary
 data <- subset(data, select = -c(Over18, StdHrs, EmpCount, EmpNumber))
 
 ```
@@ -89,6 +90,23 @@ b Please provide (in table format or similar), descriptive statistics on at leas
 
 
 ```{r Question_3}
+#Exploratory data analysis
+#Compare Employee status and distance from home
+ggplot(data = data, aes(x = data$Attrition, y = data$DistFromHome)) + ggtitle("Travel Distance") + ylab("Distance from Home") + xlab("Current Employee") + geom_boxplot()
+
+#Compare Employee status and Total Years Worked
+ggplot(data = data, aes(x = data$Attrition, y = data$TotalWrkYrs )) + ggtitle("Total Years Worked") + ylab("Years Worked") + xlab("Current Employee") + geom_boxplot()
+
+#Compare Employee status and education level
+ggplot(data = data, aes(x = data$Attrition, y = data$Education )) + ggtitle("Education Level Comparison")  + ylab("Education Level") + xlab("Current Employee") + geom_boxplot()
+
+#Compare Employee status and Daily Rate
+ggplot(data = data, aes(x = data$Attrition, y = data$DailyRate )) + ggtitle("Daily Rate") + ylab("Rate") + xlab("Current Employee") + geom_boxplot()
+
+#Compare Employee status and Stock Option level
+ggplot(data = data, aes(x = data$Attrition, y = data$StkOptLevel )) + ggtitle("Stock Option") + ylab("Stock Option Level") + xlab("Current Employee") + geom_boxplot()
+
+
 
 # check for data with age less than 18 3.a
 data[data$Age < 18,]
@@ -98,6 +116,7 @@ data.glm.reduced <- glm(Attrition ~ YrsSceLstProm + OverTime + NumCompWrk + Mari
 data.glm.reduced <- glm(Attrition ~ YrsSceLstProm + OverTime + MaritalStat + JobbSatis + JobInvolvemt + EnvSatis + DistFromHome + BusTravel, data = data, family = "binomial")
 data.glm.reduced <- glm(Attrition ~ OverTime + MaritalStat + JobbSatis + JobInvolvemt + EnvSatis + DistFromHome + BusTravel, data = data, family = "binomial")
 
+# Create data frame with  the top 7 variables
 data.7 <- subset(data, select = c(Attrition,OverTime,MaritalStat,JobbSatis,JobInvolvemt,EnvSatis,DistFromHome, BusTravel))
 # descriptive statistics on at least 7 variables
 summary(data.7)
@@ -152,6 +171,29 @@ mi <- data %>% group_by(Age) %>% count(WrkLfBalance)
 ggplot(data=mi, aes(x=WrkLfBalance, y=n, col = Age)) + geom_point() + geom_smooth(method = "lm", aes(fill = Age)) + geom_density2d()
 #Job Satisfaction
 ggplot(data=js, aes(x=JobbSatis, y=n, col = Age)) + geom_point() + geom_smooth(method = "lm", aes(fill = Age)) + geom_density2d()
+
+
+#Life satisfaction attribute added by averaging
+# Environmental satisfaction, job satisfaction, relationship satisfaction,
+# Work Life Balance, and Job Involvement
+Lifesatisfaction <- data.frame(data$EnvSatis,data$JobbSatis, data$RelatSatis, data$WrkLfBalance, data$JobInvolvemt)
+
+#Assign the Life satisfaction to the main data frame
+data$LifeSatisfaction <- rowMeans(Lifesatisfaction)
+rm(Lifesatisfaction)
+
+modelSatisfaction_LD <- glm(Attrition ~ OverTime + MaritalStat + JobbSatis + JobInvolvemt + EnvSatis + DistFromHome + BusTravel + WrkLfBalance + RelatSatis + JobbSatis + JobInvolvemt + EnvSatis + LifeSatisfaction, data = data, family = "binomial")
+summary(modelSatisfaction_LD)
+
+modelSatisfaction <- glm(Attrition ~ OverTime + MaritalStat + DistFromHome + BusTravel + LifeSatisfaction, data = data, family = "binomial")
+summary(modelSatisfaction)
+
+ggplot(data = data, aes(x = data$Attrition, y = data$LifeSatisfaction)) + ggtitle("Life Satisfaction Scores") + xlab("Attrition comparison") + ylab("Life Satisfaction Score") + geom_boxplot()
+
+hist(data[data$Attrition == "Yes",]$LifeSatisfaction)
+hist(data[data$Attrition == "No",]$LifeSatisfaction)
+
+
 
 
 ```
