@@ -8,6 +8,14 @@ Liang
 Satish
 Tyler
 
+### Objective of Repo
+A GitHub repository has been created with an RMarkdown file containing an executive summary, introduction to the project, all supporting code and analysis, and the group presentation.
+
+### Session Info
+RStudio
+Version 1.1.456 – © 2009-2018 RStudio, Inc.
+Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) rstudio Safari/538.1 Qt/5.4.1
+
 ### Dataset
 The team has been given a dataset (CaseStudy2-Data.xlsx) to conduct exploratory data analysis (EDA) to determine factors that lead to attrition. 
 
@@ -17,3 +25,22 @@ The team has been given a dataset (CaseStudy2-Data.xlsx) to conduct exploratory 
 3. The team should provide any other interesting trends and observations from the analysis. The analysis should be backed up by robust experimentation and (where applicable) appropriate visualization. 
 4. Experiments, analysis, and visualization must be conducted in R. 
 5. Consult with the business owner to get clarifications on the dataset or business goals. 
+
+### File Structure
+Create a file structure that is accessible and transparent. 
+/Codebook/ :Folder for codebook, amendments
+/Data/ : Folder for dataset
+/DDSAnalytics.Rmd : RMarkdown file containing an excutive summary.
+/DDSAnalytics.html : HTML file generated from DDSAnalytics.Rmd
+
+### Codebook 
+Formatted in an approachable way, describes peculiarities of the data by variable and transforming.  
+
+        MSDS6306_Case_Study_2/Codebook/DDSAnalytics Codebook.docx
+      
+### Amendment Information from Business Owner
+        MSDS6306_Case_Study_2/Codebook/Amendments
+      
+### contact information, 
+DDSAnalytics Inc.
+123 Abcde Blvd., Dallas, TX
