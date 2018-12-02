@@ -477,12 +477,48 @@ discernible relationship there to what?
 
 ![](DDSAnalytics_files/figure-markdown_strict/Question_4-4.png)
 
-    hist(data[data$Attrition == "Yes",]$LifeSatisfaction)
+    hist(data[data$Attrition == "Yes",]$LifeSatisfaction, xlab = "Score", main = "Attrition -Yes")
 
 ![](DDSAnalytics_files/figure-markdown_strict/Question_4-5.png)
 
-    hist(data[data$Attrition == "No",]$LifeSatisfaction)
+    hist(data[data$Attrition == "No",]$LifeSatisfaction, xlab = "Score", main="Attrition - No" )
 
 ![](DDSAnalytics_files/figure-markdown_strict/Question_4-6.png)
 
-### Conclusion
+Conclusion
+----------
+
+### Summary :
+
+Key impact factors on attrition:
+
+-   Overtime
+-   Life Satisfaction
+-   Business Travel Frequently
+-   Distance From Home
+
+Key Job Roles on Attrition:
+
+-   Sales Representative
+-   Laboratory Technician
+-   Human Resources
+-   Sales Executive
+-   Research Scientist
+
+### Recommendations:
+
+Reduce overtime by increasing workforces in key job roles
+
+Increase life satisfaction in 5 ways:
+
+-   Environmental Satisfaction
+-   Job Satisfaction
+-   Relationship Satisfaction
+-   Work life Balance
+-   Job Involvement
+
+Reduce Business travel frequency by increasing workforce or utilizing
+telecommunication equipment and tools
+
+Providing company transportation service such as shuttle bus and WFH
+allowances
